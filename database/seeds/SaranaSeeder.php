@@ -15,20 +15,17 @@ class SaranaSeeder extends Seeder
     [
         'nama_sarana'         => 'Kursi',
         'jumlah'              => 200,
-        'tanggal_pembelian'   => '15 September 2018',
-        'remember_token'      => str_random(10),
+        'tanggal_pembelian'   => '2018-9-15',
     ],
     [
         'nama_sarana'         => 'Meja',
         'jumlah'              => 100,
-        'tanggal_pembelian'   => '15 September 2018',
-        'remember_token'      => str_random(10),
+        'tanggal_pembelian'   => '2018-9-15',
     ],
     [
         'nama_sarana'         => 'Papan Tulis',
         'jumlah'              => 26,
-        'tanggal_pembelian'   => '15 September 2018',
-        'remember_token'      => str_random(10),
+        'tanggal_pembelian'   => '2018-9-15',
     ],
     ]);
     }

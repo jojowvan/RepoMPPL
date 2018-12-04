@@ -31,7 +31,7 @@
             <div class="card">
               <div class="card-header">Example Form</div>
               <div class="card-body card-block">
-                <form action="{{ route('tambah.sarana1') }}" method="post" class="">
+                <form action="{{ route('rencana.anggaran1') }}" method="post" class="">
                   <input type="hidden" name="_token" value="{{ csrf_token() }}">
                   <div class="form-group">
                     <div class="input-group">
@@ -48,7 +48,7 @@
                   <div class="form-group">
                     <div class="input-group">
                       <div class="input-group-addon"><i class="fa fa-asterisk"></i></div>
-                      <input type="date" id="password" name="tanggal" placeholder="Tanggal Pembelian" class="form-control">
+                      <input type="number" id="password" name="harga" placeholder="Total Harga" class="form-control">
                     </div>
                   </div>
                   <div class="form-actions form-group"><button type="submit" class="btn btn-success btn-sm">Submit</button></div>

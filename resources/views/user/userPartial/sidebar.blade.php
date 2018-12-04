@@ -58,10 +58,10 @@
           <a href="{{ route('daftar.sarana') }}"> <i class="menu-icon ti-email"></i>Daftar Sarana dan Prasarana</a>
         </li>
         <li>
-          <a href=""> <i class="menu-icon ti-email"></i>Rencana Anggaran</a>
+          <a href="{{ route('rencana.anggaran') }}"> <i class="menu-icon ti-email"></i>Rencana Anggaran</a>
         </li>
         <li>
-          <a href=""> <i class="menu-icon ti-email"></i>Tambah Sarana dan Prasarana</a>
+          <a href="{{ route('tambah.sarana') }}"> <i class="menu-icon ti-email"></i>Tambah Sarana dan Prasarana</a>
         </li>
 
         <?php

@@ -31,6 +31,9 @@ Route::group(['prefix'=>'SaranaPrasarana'], function(){
   Route::get('/DaftarSarana', 'StaffSaranaController@daftarSarana')->name('daftar.sarana');
   Route::get('/AnggaranSarana', 'StaffSaranaController@anggaranSarana')->name('anggaran.sarana');
   Route::get('/TambahSarana', 'StaffSaranaController@tambahSarana')->name('tambah.sarana');
+  Route::post('/TambahSarana', 'StaffSaranaController@tambahSarana1')->name('tambah.sarana1');
+  Route::get('/RencanaAnggaran', 'StaffSaranaController@rencanaAnggaran')->name('rencana.anggaran');
+  Route::post('/RencanaAnggaran', 'StaffSaranaController@rencanaAnggaran1')->name('rencana.anggaran1');
 });
 //
 // Route::get('/loginDua', function () {
