@@ -22,6 +22,7 @@
 <script src="{{ asset('assets/js/lib/data-table/buttons.print.min.js') }}"></script>
 <script src="{{ asset('assets/js/lib/data-table/buttons.colVis.min.js') }}"></script>
 <script src="{{ asset('assets/js/lib/data-table/datatables-init.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function() {
       $('#bootstrap-data-table-export').DataTable();

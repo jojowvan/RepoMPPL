@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Sarana;
 use App\Anggaran;
+use App\User;
 use Auth;
 
 class StaffSaranaController extends Controller
@@ -12,6 +13,11 @@ class StaffSaranaController extends Controller
   public function daftarSarana()
   {
       return view('user/daftarSarana');
+  }
+
+  public function daftarAnggaran()
+  {
+      return view('user/daftarAnggaran');
   }
 
   public function anggaranSarana()
@@ -53,4 +59,10 @@ class StaffSaranaController extends Controller
       session()->flash('success', 'Sarana Berhasil Dianggarkan');
       return view('user/rencanaAnggaran');
   }
+
+  public function updateAnggaran(Request $request, $id)
+    {
+        Anggaran::where('id_anggaran', $id)->update(['setuju'=>$request->setuju]);
+      	return view('user/homeKepsek');
+    }
 }

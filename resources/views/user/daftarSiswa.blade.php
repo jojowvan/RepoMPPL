@@ -5,7 +5,7 @@
     <div class="col-sm-4">
       <div class="page-header float-left">
         <div class="page-title">
-          <h1>Dashboard</h1>
+          <h1>Daftar Siswa</h1>
         </div>
       </div>
     </div>
@@ -13,9 +13,8 @@
       <div class="page-header float-right">
         <div class="page-title">
           <ol class="breadcrumb text-right">
-            <li><a href="#">Dashboard</a></li>
-            <li><a href="#">Table</a></li>
-            <li class="active">Data table</li>
+            <li><a href="{{ route('home') }}">Halaman Utama</a></li>
+            <li class="active">Daftar Siswa</li>
           </ol>
         </div>
       </div>
@@ -36,20 +35,19 @@
                 <table id="bootstrap-data-table" class="table table-striped table-bordered">
                   <thead>
                     <tr>
-                      <th>No.</th>
-                      <th>Nama Siswa</th>
-                      <th>NISN</th>
-                      <th>Tingkat</th>
-                      <th>Alamat</th>
-                      <th>No. HP Orang Tua</th>
-                      <th>Pembayaran SPP Terakhir</th>
+                      <th style="text-align:center;">No.</th>
+                      <th style="text-align:center;">Nama Siswa</th>
+                      <th style="text-align:center;">NISN</th>
+                      <th style="text-align:center;">Tingkat</th>
+                      <th style="text-align:center;">Alamat</th>
+                      <th style="text-align:center;">No. HP Orang Tua</th>
+                      <th style="text-align:center;">Pembayaran SPP Terakhir</th>
                     </tr>
                   </thead>
                   <tbody>
                     <?php
                       use Carbon\Carbon;
                       use App\SPP;
-
                       $tingkat = Carbon::now()->format('Y');
                       $i = 1;
                       foreach(App\Siswa::orderBy('nisn')->get() as $siswa) {
@@ -64,17 +62,15 @@
                             $spp = 'Januari';
                           }
                     ?>
-
                     <tr>
-                      <td>{{ $i }}.</td>
+                      <td style="text-align:center;">{{ $i }}.</td>
                       <td>{{ $siswa->nama_siswa }}</td>
-                      <td>{{ $siswa->nisn }}</td>
-                      <td>{{ $tahun_masuk }}</td>
+                      <td style="text-align:center;">{{ $siswa->nisn }}</td>
+                      <td style="text-align:center;">{{ $tahun_masuk }}</td>
                       <td>{{ $siswa->alamat }}</td>
-                      <td>{{ $siswa->no_hp_ortu }}</td>
-                      <td>{{ $spp }}</td>
+                      <td style="text-align:center;">{{ $siswa->no_hp_ortu }}</td>
+                      <td style="text-align:center;">{{ $spp }}</td>
                     </tr>
-
                     <?php
                         $i++;
                         }

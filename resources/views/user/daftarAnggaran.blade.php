@@ -5,7 +5,7 @@
     <div class="col-sm-4">
       <div class="page-header float-left">
         <div class="page-title">
-          <h1>Daftar Sarana dan Prasarana</h1>
+          <h1>Daftar Anggaran</h1>
         </div>
       </div>
     </div>
@@ -14,7 +14,7 @@
         <div class="page-title">
           <ol class="breadcrumb text-right">
             <li><a href="{{ route('home') }}">Halaman Utama</a></li>
-            <li class="active">Daftar Sarana dan Prasarana</li>
+            <li class="active">Daftar Anggaran</li>
           </ol>
         </div>
       </div>
@@ -28,9 +28,9 @@
           <!-- Content -->
           <div class="col-md-12">
             <div class="card">
-              <!-- <div class="card-header">
-                <strong class="card-title">Data Table</strong>
-              </div> -->
+              <div class="card-header">
+                <!-- <strong class="card-title">Data Table</strong> -->
+              </div>
               <div class="card-body">
                 <table id="bootstrap-data-table" class="table table-striped table-bordered">
                   <thead>
@@ -38,22 +38,30 @@
                       <th style="text-align:center;">No.</th>
                       <th style="text-align:center;">Nama Barang</th>
                       <th style="text-align:center;">Jumlah Barang</th>
-                      <th style="text-align:center;">Tanggal Pembelian</th>
+                      <th style="text-align:center;">Harga Barang</th>
+                      <th style="text-align:center;">Keterangan</th>
                     </tr>
                   </thead>
                   <tbody>
                     <?php
-                      use App\Sarana;
+                      use App\Anggaran;
 
                       $i = 1;
-                      foreach(Sarana::orderBy('id_sarana')->get() as $sarana) {
+                      foreach(Anggaran::orderBy('id_anggaran')->get() as $anggaran) {
                     ?>
 
                     <tr>
                       <td style="text-align:center;">{{ $i }}.</td>
-                      <td>{{ $sarana->nama_sarana }}</td>
-                      <td style="text-align:center;">{{ $sarana->jumlah }} buah</td>
-                      <td style="text-align:center;">{{ $sarana->tanggal_pembelian }}</td>
+                      <td>{{ $anggaran->nama_sarana }}</td>
+                      <td style="text-align:center;">{{ $anggaran->jumlah }} Buah</td>
+                      <td style="text-align:center;">Rp {{ number_format($anggaran->harga, 0, ',', '.') }}</td>
+                      @if($anggaran->setuju == NULL)
+                      <td style="text-align:center;">Belum Dilihat</td>
+                      @elseif($anggaran->setuju == 1)
+                      <td style="text-align:center;">Sudah Disetujui</td>
+                      @elseif($anggaran->setuju == 2)
+                      <td style="text-align:center;">Tidak Disetujui</td>
+                      @endif
                     </tr>
 
                     <?php

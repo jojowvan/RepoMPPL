@@ -7,6 +7,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::post('/home/{id_anggaran}', 'StaffSaranaController@updateAnggaran')->name('update');
+
 
 // Route::post('/tambahSiswa', 'StaffAdministrasiController@tambahSiswa')->name('tambahSiswa');
 //Route::get('/tambahCabang', 'AdminController@tambahCabang')->name('tambahCabang');
@@ -32,8 +34,10 @@ Route::group(['prefix'=>'SaranaPrasarana'], function(){
   Route::get('/AnggaranSarana', 'StaffSaranaController@anggaranSarana')->name('anggaran.sarana');
   Route::get('/TambahSarana', 'StaffSaranaController@tambahSarana')->name('tambah.sarana');
   Route::post('/TambahSarana', 'StaffSaranaController@tambahSarana1')->name('tambah.sarana1');
+  Route::get('/DaftarAnggaran', 'StaffSaranaController@daftarAnggaran')->name('daftar.anggaran');
   Route::get('/RencanaAnggaran', 'StaffSaranaController@rencanaAnggaran')->name('rencana.anggaran');
   Route::post('/RencanaAnggaran', 'StaffSaranaController@rencanaAnggaran1')->name('rencana.anggaran1');
+
 });
 //
 // Route::get('/loginDua', function () {

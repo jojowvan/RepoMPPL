@@ -11,7 +11,7 @@
     <div id="main-menu" class="main-menu collapse navbar-collapse">
       <ul class="nav navbar-nav">
         <li>
-          <a href=""> <i class="menu-icon fa fa-dashboard"></i>Halaman Utama</a>
+          <a href="{{ route('home') }}"> <i class="menu-icon fa fa-dashboard"></i>Halaman Utama</a>
         </li>
 
         <?php
@@ -21,10 +21,10 @@
 
         <h3 class="menu-title">Kepala Sekolah</h3>
         <li>
-          <a href="{{ route('daftarStaff') }}"> <i class="menu-icon ti-email"></i>Daftar Staff</a>
+          <a href="{{ route('daftarStaff') }}"> <i class="menu-icon fa fa-users"></i>Daftar Staff</a>
         </li>
         <li>
-          <a href="{{ route('formTambahStaff') }}"> <i class="menu-icon ti-email"></i>Tambah Staff</a>
+          <a href="{{ route('formTambahStaff') }}"> <i class="menu-icon fa fa-user-plus"></i>Tambah Staff</a>
         </li>
         <!-- <li>
           <a href=""> <i class="menu-icon ti-email"></i>Pembayaran SPP</a>
@@ -36,15 +36,15 @@
           else if(auth()->user()->jabatan==1) {
          ?>
 
-        <h3 class="menu-title">Keuangan</h3>
+        <h3 class="menu-title">Kesiswaan</h3>
         <li>
-          <a href="{{ route('daftarSiswa') }}"> <i class="menu-icon ti-email"></i>Daftar Siswa</a>
+          <a href="{{ route('daftarSiswa') }}"> <i class="menu-icon fa fa-users"></i>Daftar Siswa</a>
         </li>
         <li>
-          <a href="{{ route('formTambahSiswa') }}"> <i class="menu-icon ti-email"></i>Tambah Siswa</a>
+          <a href="{{ route('formTambahSiswa') }}"> <i class="menu-icon fa fa-user-plus"></i>Tambah Siswa</a>
         </li>
         <li>
-          <a href="{{ route('formBayarSPP') }}"> <i class="menu-icon ti-email"></i>Pembayaran SPP</a>
+          <a href="{{ route('formBayarSPP') }}"> <i class="menu-icon fa fa-credit-card"></i>Pembayaran SPP</a>
         </li>
 
         <?php
@@ -55,13 +55,16 @@
 
         <h3 class="menu-title">Sarana dan Prasarana</h3>
         <li>
-          <a href="{{ route('daftar.sarana') }}"> <i class="menu-icon ti-email"></i>Daftar Sarana dan Prasarana</a>
+          <a href="{{ route('daftar.sarana') }}"> <i class="menu-icon fa fa-cogs"></i>Daftar Sarana</a>
         </li>
         <li>
-          <a href="{{ route('rencana.anggaran') }}"> <i class="menu-icon ti-email"></i>Rencana Anggaran</a>
+          <a href="{{ route('tambah.sarana') }}"> <i class="menu-icon fa fa-plus-square"></i>Tambah Sarana</a>
         </li>
         <li>
-          <a href="{{ route('tambah.sarana') }}"> <i class="menu-icon ti-email"></i>Tambah Sarana dan Prasarana</a>
+          <a href="{{ route('daftar.anggaran') }}"> <i class="menu-icon fa fa-shopping-cart"></i>Daftar Anggaran</a>
+        </li>
+        <li>
+          <a href="{{ route('rencana.anggaran') }}"> <i class="menu-icon fa fa-cart-plus"></i> Tambah Anggaran</a>
         </li>
 
         <?php

@@ -5,7 +5,7 @@
     <div class="col-sm-4">
       <div class="page-header float-left">
         <div class="page-title">
-          <h1>Dashboard</h1>
+          <h1>Daftar Staff</h1>
         </div>
       </div>
     </div>
@@ -13,9 +13,8 @@
       <div class="page-header float-right">
         <div class="page-title">
           <ol class="breadcrumb text-right">
-            <li><a href="#">Dashboard</a></li>
-            <li><a href="#">Table</a></li>
-            <li class="active">Data table</li>
+            <li><a href="{{ route('home') }}">Halaman Utama</a></li>
+            <li class="active">Daftar Staff</li>
           </ol>
         </div>
       </div>
@@ -29,18 +28,19 @@
           <!-- Content -->
           <div class="col-md-12">
             <div class="card">
-              <div class="card-header">
+              <!-- <div class="card-header">
                 <strong class="card-title">Data Table</strong>
-              </div>
+              </div> -->
               <div class="card-body">
                 <table id="bootstrap-data-table" class="table table-striped table-bordered">
                   <thead>
                     <tr>
-                      <th>No.</th>
-                      <th>Nama Staff</th>
-                      <th>Bidang</th>
-                      <th>NIP</th>
-                      <th>Aksi</th>
+                      <th style="text-align:center;">No.</th>
+                      <th style="text-align:center;">Nama Staff</th>
+                      <th style="text-align:center;">Email</th>
+                      <th style="text-align:center;">Bidang</th>
+                      <th style="text-align:center;">NIP</th>
+                      <th style="text-align:center;">Aksi</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -48,25 +48,50 @@
                       $i = 1;
                       foreach(App\User::orderBy('id')->get() as $staff) {
                         if(auth()->user()->id != $staff->id) {
-                          if($staff->jabatan == 1) {
+                          if($staff->jabatan == 3) {
                             $jabatan = 'Kepala Sekolah';
                           }
 
-                          else if($staff->jabatan == 2) {
+                          else if($staff->jabatan == 1) {
                             $jabatan = 'Staff Administrasi Kesiswaan dan Keuangan';
                           }
 
-                          else if($staff->jabatan == 3) {
+                          else if($staff->jabatan == 2) {
                             $jabatan = 'Staff Sarana dan Prasarana';
                           }
                     ?>
-
                     <tr>
-                      <td>{{ $i }}.</td>
+                      <td style="text-align:center;">{{ $i }}.</td>
                       <td>{{ $staff->name }}</td>
+                      <td>{{ $staff->email }}</td>
                       <td>{{ $jabatan }}</td>
-                      <td>{{ $staff->nip }}</td>
-                      <td>Hapus</td>
+                      <td style="text-align:center;">{{ $staff->nip }}</td>
+                      <td style="text-align:center;">
+                        <form action="" method="post" id="deleteButton{{ $staff->id }}">
+                          {{ csrf_field() }}
+                          {{ method_field('DELETE') }}
+                          <button type="submit"  class="btn btn-danger btn-xs"></i>Delete</button>
+                          <script>
+                            document.getElementById('deleteButton{{ $staff->id }}').onclick = function(event){
+                              event.preventDefault();
+                            	swal({
+                            		title: "Apakah anda yakin ingin menghapus?",
+                            		text: "Anda tidak dapat mengembalikan kembali.",
+                            		type: "warning",
+                            		showCancelButton: true,
+                            		confirmButtonColor: '#DD6B55',
+                            		confirmButtonText: 'Ya',
+                            		closeOnConfirm: false,
+                            		//closeOnCancel: false
+                            	},
+                            	function(){
+                                // swal("Terhapus", "Akun telah terhapus!", "Sukses");
+                                document.getElementById("deleteButton{{ $staff->id }}").submit();
+                            	});
+                            };
+                          </script>
+                        </form>
+                      </td>
                     </tr>
 
                     <?php

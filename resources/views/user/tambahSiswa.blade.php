@@ -5,7 +5,7 @@
     <div class="col-sm-4">
       <div class="page-header float-left">
         <div class="page-title">
-          <h1>Dashboard</h1>
+          <h1>Tambah Siswa</h1>
         </div>
       </div>
     </div>
@@ -13,9 +13,8 @@
       <div class="page-header float-right">
         <div class="page-title">
           <ol class="breadcrumb text-right">
-            <li><a href="#">Dashboard</a></li>
-            <li><a href="#">Table</a></li>
-            <li class="active">Data table</li>
+            <li><a href="{{ route('home') }}">Halaman Utama</a></li>
+            <li class="active">Tambah Siswa</li>
           </ol>
         </div>
       </div>
@@ -29,7 +28,7 @@
           <!-- Content -->
           <div class="col-lg-10" style="padding-left: 190px;">
             <div class="card">
-              <div class="card-header">Example Form</div>
+              <!-- <div class="card-header">Example Form</div> -->
               <div class="card-body card-block">
                 <form action="{{ route('tambahSiswa') }}" method="post" class="">
                   <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -41,29 +40,29 @@
                   </div>
                   <div class="form-group">
                     <div class="input-group">
-                      <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
+                      <div class="input-group-addon"><i class="fa fa-id-card"></i></div>
                       <input type="text" name="nisn" placeholder="NISN Siswa" class="form-control">
                     </div>
                   </div>
                   <div class="form-group">
                     <div class="input-group">
-                      <div class="input-group-addon"><i class="fa fa-asterisk"></i></div>
+                      <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
                       <input type="text" name="tahun_masuk" placeholder="Tahun Masuk" class="form-control">
                     </div>
                   </div>
                   <div class="form-group">
                     <div class="input-group">
-                      <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
+                      <div class="input-group-addon"><i class="fa fa-address-book"></i></div>
                       <input type="text" name="alamat" placeholder="Alamat" class="form-control">
                     </div>
                   </div>
                   <div class="form-group">
                     <div class="input-group">
-                      <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
+                      <div class="input-group-addon"><i class="fa fa-phone-square"></i></div>
                       <input type="text" name="no_hp_ortu" placeholder="No. HP Orang Tua" class="form-control">
                     </div>
                   </div>
-                  <div class="form-actions form-group"><button type="submit" class="btn btn-success btn-sm">Submit</button></div>
+                  <div class="form-actions form-group"><button type="submit" class="btn btn-success btn-sm">Tambah</button></div>
                 </form>
               </div>
             </div>
