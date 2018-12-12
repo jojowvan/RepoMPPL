@@ -30,7 +30,7 @@
             <div class="card">
               <!-- <div class="card-header">Example Form</div> -->
               <div class="card-body card-block">
-                <form action="" method="post" class="">
+                <form action="{{ route('tambahStaff')}}" method="post" class="">
                   <input type="hidden" name="_token" value="{{ csrf_token() }}">
                   <div class="form-group">
                     <div class="input-group">

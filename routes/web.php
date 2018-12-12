@@ -5,7 +5,7 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-
+Route::get('/pdf', 'KepalaSekolahController@pdf')->name('pdf');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/home/{id_anggaran}', 'StaffSaranaController@updateAnggaran')->name('update');
 
@@ -16,6 +16,7 @@ Route::post('/home/{id_anggaran}', 'StaffSaranaController@updateAnggaran')->name
 Route::group(['prefix'=>'KepalaSekolah'], function(){
   Route::get('/DaftarStaff', 'KepalaSekolahController@daftarStaff')->name('daftarStaff');
   Route::get('/TambahStaff', 'KepalaSekolahController@formTambahStaff')->name('formTambahStaff');
+  Route::post('/TambahStaff', 'KepalaSekolahController@tambahStaff')->name('tambahStaff');
   // Route::post('/TambahSiswa', 'StaffAdministrasiController@tambahSiswa')->name('tambahSiswa');
   // Route::get('/BayarSPP', 'StaffAdministrasiController@formBayarSPP')->name('formBayarSPP');
   // Route::post('/BayarSPP', 'StaffAdministrasiController@bayarSPP')->name('bayarSPP');
