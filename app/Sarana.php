@@ -9,6 +9,6 @@ class Sarana extends Model
   protected $table = 'sarana';
 
   protected $fillable = [
-    'nama_sarana', 'jumlah', 'tanggal_pembelian'
+    'nama_sarana', 'jumlah', 'tanggal_pembelian', 'keterangan'
   ];
 }

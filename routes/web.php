@@ -5,7 +5,6 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-Route::get('/pdf', 'KepalaSekolahController@pdf')->name('pdf');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/home/{id_anggaran}', 'StaffSaranaController@updateAnggaran')->name('update');
 
@@ -17,6 +16,11 @@ Route::group(['prefix'=>'KepalaSekolah'], function(){
   Route::get('/DaftarStaff', 'KepalaSekolahController@daftarStaff')->name('daftarStaff');
   Route::get('/TambahStaff', 'KepalaSekolahController@formTambahStaff')->name('formTambahStaff');
   Route::post('/TambahStaff', 'KepalaSekolahController@tambahStaff')->name('tambahStaff');
+  Route::get('/EditStaff', 'KepalaSekolahController@editStaff')->name('editStaff');
+  Route::post('/EditStaff', 'KepalaSekolahController@editStaff1')->name('editStaff1');
+  Route::get('/DaftarSarana', 'KepalaSekolahController@lihatSarana')->name('lihatAnggaran');
+  Route::get('/SaranaSetuju', 'KepalaSekolahController@anggaranSetuju')->name('anggaranSetuju');
+  Route::get('/Laporan', 'KepalaSekolahController@pdf')->name('lihatLaporan');
   // Route::post('/TambahSiswa', 'StaffAdministrasiController@tambahSiswa')->name('tambahSiswa');
   // Route::get('/BayarSPP', 'StaffAdministrasiController@formBayarSPP')->name('formBayarSPP');
   // Route::post('/BayarSPP', 'StaffAdministrasiController@bayarSPP')->name('bayarSPP');
@@ -38,6 +42,8 @@ Route::group(['prefix'=>'SaranaPrasarana'], function(){
   Route::get('/DaftarAnggaran', 'StaffSaranaController@daftarAnggaran')->name('daftar.anggaran');
   Route::get('/RencanaAnggaran', 'StaffSaranaController@rencanaAnggaran')->name('rencana.anggaran');
   Route::post('/RencanaAnggaran', 'StaffSaranaController@rencanaAnggaran1')->name('rencana.anggaran1');
+  Route::post('/tambahSaranaOtomatis', 'StaffSaranaController@tambahSaranaOtomatis')->name('tambahSaranaOtomatis');
+  Route::get('/BatalkanAnggaran', 'StaffSaranaController@batalAnggaran')->name('batalAnggaran');
 
 });
 //

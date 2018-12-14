@@ -7,6 +7,8 @@ use App\Sarana;
 use App\Anggaran;
 use App\User;
 use Auth;
+use Session;
+use Carbon\Carbon;
 
 class StaffSaranaController extends Controller
 {
@@ -65,4 +67,23 @@ class StaffSaranaController extends Controller
         Anggaran::where('id_anggaran', $id)->update(['setuju'=>$request->setuju]);
       	return view('user/homeKepsek');
     }
+
+  public function tambahSaranaOtomatis(Request $request)
+  {
+    $tanggal = Carbon::now()->toDateString();
+    $sarana   = Sarana::create([
+            'nama_sarana'        => $request->input('nama_sarana'),
+            'jumlah'             => $request->input('jumlah'),
+            'tanggal_pembelian'  => $tanggal,
+        ]);
+
+    $anggaran = Anggaran::where('id_anggaran', $request->input('id_anggaran'))->update(['setuju'=>3]);
+
+    return redirect()->route('daftar.anggaran');
+  }
+
+  public function batalAnggaran()
+  {
+    dd(2);
+  }
 }

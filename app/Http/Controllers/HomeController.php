@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use Auth;
+use App\Anggaran;
 
 class HomeController extends Controller
 {
@@ -32,7 +33,8 @@ class HomeController extends Controller
           return view('user/home');
         }
         else if(auth()->user()->jabatan==3) {
-          return view('user/homeKepsek');
+          $anggarans = Anggaran::orderBy('nama_sarana')->get();
+          return view('user/homeKepsek', compact('anggarans'));
         }
     }
 }

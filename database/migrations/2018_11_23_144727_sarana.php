@@ -18,6 +18,7 @@ class Sarana extends Migration
         $table->string('nama_sarana');
         $table->integer('jumlah');
         $table->string('tanggal_pembelian');
+        $table->string('keterangan')->default('Baik');
         $table->timestamps();
       });
     }

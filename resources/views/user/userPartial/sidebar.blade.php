@@ -26,6 +26,12 @@
         <li>
           <a href="{{ route('formTambahStaff') }}"> <i class="menu-icon fa fa-user-plus"></i>Tambah Staff</a>
         </li>
+        <li>
+          <a href="{{ route('lihatAnggaran') }}"> <i class="menu-icon fa fa-users"></i>Daftar Sarana</a>
+        </li>
+        <li>
+          <a href="{{ route('lihatLaporan') }}"> <i class="menu-icon fa fa-users"></i>Laporan</a>
+        </li>
         <!-- <li>
           <a href=""> <i class="menu-icon ti-email"></i>Pembayaran SPP</a>
         </li> -->

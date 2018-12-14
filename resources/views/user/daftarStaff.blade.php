@@ -67,10 +67,14 @@
                       <td>{{ $jabatan }}</td>
                       <td style="text-align:center;">{{ $staff->nip }}</td>
                       <td style="text-align:center;">
+                        <?php
+                          session()->put('id_staff', $staff->id);
+                         ?>
+                         <a href="{{route('editStaff')}}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
                         <form action="" method="post" id="deleteButton{{ $staff->id }}">
                           {{ csrf_field() }}
                           {{ method_field('DELETE') }}
-                          <button type="submit"  class="btn btn-danger btn-xs"></i>Delete</button>
+                          <button type="submit" class="btn btn-danger btn-xs"></i>Delete</button>
                           <script>
                             document.getElementById('deleteButton{{ $staff->id }}').onclick = function(event){
                               event.preventDefault();

@@ -28,35 +28,54 @@
                     <th style="text-align:center;">No.</th>
                     <th style="text-align:center;">Nama Barang</th>
                     <th style="text-align:center;">Jumlah Barang</th>
-                    <th style="text-align:center;">Harga Barang</th>
+                    <th style="text-align:center;">Total Barang</th>
                     <th style="text-align:center;">Keterangan</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <?php
-                    use App\Anggaran;
-                    $i = 1;
-                    if(Anggaran::orderBy('setuju')->get() == NULL){
-                    foreach(Anggaran::orderBy('id_anggaran')->get() as $anggaran) {
-                  ?>
+                  <?php $i=1; ?>
+                  @foreach($anggarans as $anggaran)
+                  @if($anggaran->setuju == NULL)
                   <tr>
                     <td style="text-align:center;">{{ $i }}.</td>
                     <td>{{ $anggaran->nama_sarana }}</td>
                     <td style="text-align:center;">{{ $anggaran->jumlah }} Buah</td>
                     <td style="text-align:center;">Rp {{ number_format($anggaran->harga, 0, ',', '.') }}</td>
                     <td style="text-align:center;">
-                      <form method="POST" action="{{ route('update', $anggaran->id_anggaran) }}">
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        <button type="submit" class="btn btn-success" name="setuju" value="1">{{ __('Setuju') }}</button>
-                        <button type="submit" class="btn btn-danger" name="setuju" value="2">{{ __('Tidak Setuju') }}</button>
+                      <?php
+                        session()->put('id_anggaran', $anggaran->id_anggaran);
+                       ?>
+                       <a class="btn btn-danger btn-xs" href="{{route('anggaranSetuju')}}">Setuju</a>
+                      <form action="" method="post" id="deleteButton{{ $anggaran->id_anggaran }}">
+                        {{ csrf_field() }}
+                        {{ method_field('DELETE') }}
+
+                        <button type="submit" class="btn btn-danger btn-xs"></i>Tidak Setuju</button>
+                        <script>
+                          document.getElementById('deleteButton{{ $anggaran->id_anggaran }}').onclick = function(event){
+                            event.preventDefault();
+                            swal({
+                              title: "Apakah anda yakin tidak setuju?",
+                              text: "Anda tidak dapat mengembalikan kembali.",
+                              type: "warning",
+                              showCancelButton: true,
+                              confirmButtonColor: '#DD6B55',
+                              confirmButtonText: 'Ya',
+                              closeOnConfirm: false,
+                              //closeOnCancel: false
+                            },
+                            function(){
+                              // swal("Terhapus", "Akun telah terhapus!", "Sukses");
+                              document.getElementById("deleteButton{{ $anggaran->id_anggaran }}").submit();
+                            });
+                          };
+                        </script>
                       </form>
                     </td>
-                    <?php
-                          $i++;
-                        }
-                      }
-                    ?>
                   </tr>
+                  <?php $i++; ?>
+                  @endif
+                  @endforeach
                 </tbody>
               </table>
             </div>

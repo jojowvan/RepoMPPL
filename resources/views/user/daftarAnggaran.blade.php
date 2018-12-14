@@ -32,7 +32,7 @@
                 <!-- <strong class="card-title">Data Table</strong> -->
               </div>
               <div class="card-body">
-                <table id="bootstrap-data-table" class="table table-striped table-bordered">
+                <table class="table table-striped table-bordered">
                   <thead>
                     <tr>
                       <th style="text-align:center;">No.</th>
@@ -40,6 +40,7 @@
                       <th style="text-align:center;">Jumlah Barang</th>
                       <th style="text-align:center;">Harga Barang</th>
                       <th style="text-align:center;">Keterangan</th>
+                      <th style="text-align:center;">Aksi</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -51,16 +52,33 @@
                     ?>
 
                     <tr>
+                      @if($anggaran->setuju != 3)
                       <td style="text-align:center;">{{ $i }}.</td>
                       <td>{{ $anggaran->nama_sarana }}</td>
                       <td style="text-align:center;">{{ $anggaran->jumlah }} Buah</td>
                       <td style="text-align:center;">Rp {{ number_format($anggaran->harga, 0, ',', '.') }}</td>
                       @if($anggaran->setuju == NULL)
-                      <td style="text-align:center;">Belum Dilihat</td>
+                      <td style="text-align:center;">Belum Diputuskan</td>
                       @elseif($anggaran->setuju == 1)
                       <td style="text-align:center;">Sudah Disetujui</td>
                       @elseif($anggaran->setuju == 2)
                       <td style="text-align:center;">Tidak Disetujui</td>
+                      @else
+                      <td style="text-align:center;"></td>
+                      @endif
+                      <td style="text-align:center;">
+                        @if($anggaran->setuju == 1)
+                          <form action="{{route('tambahSaranaOtomatis')}}" method="post">
+                            {{ csrf_field() }}
+                            <input type="hidden" value="{{$anggaran->id_anggaran}}" name="id_anggaran">
+                            <input type="hidden" value="{{$anggaran->nama_sarana}}" name="nama_sarana">
+                            <input type="hidden" value="{{$anggaran->jumlah}}" name="jumlah">
+                            <button type="submit" class="btn btn-danger btn-xs"></i>Tambah Sarana</button>
+                          </form>
+                        @elseif($anggaran->setuju == NULL)
+                          <a href="{{route('batalAnggaran')}}"> Batalkan Anggaran </a>
+                        @endif
+                      </td>
                       @endif
                     </tr>
 
