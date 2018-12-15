@@ -46,33 +46,30 @@
                       <?php
                         session()->put('id_anggaran', $anggaran->id_anggaran);
                        ?>
-                      <form>
-                        <a class="btn btn-success btn-sm" href="{{route('anggaranSetuju')}}">Setuju</a>
-                        <form action="" method="post" id="deleteButton{{ $anggaran->id_anggaran }}">
-                          {{ csrf_field() }}
-                          {{ method_field('DELETE') }}
-
-                          <button type="submit" class="btn btn-danger btn-sm"></i>Tidak Setuju</button>
-                          <script>
-                            document.getElementById('deleteButton{{ $anggaran->id_anggaran }}').onclick = function(event){
-                              event.preventDefault();
-                              swal({
-                                title: "Apakah anda yakin tidak setuju?",
-                                text: "Anda tidak dapat mengembalikan kembali.",
-                                type: "warning",
-                                showCancelButton: true,
-                                confirmButtonColor: '#DD6B55',
-                                confirmButtonText: 'Ya',
-                                closeOnConfirm: false,
-                                //closeOnCancel: false
-                              },
-                              function(){
-                                // swal("Terhapus", "Akun telah terhapus!", "Sukses");
-                                document.getElementById("deleteButton{{ $anggaran->id_anggaran }}").submit();
-                              });
-                            };
-                          </script>
-                        </form>
+                       <a class="btn btn-danger btn-xs" href="{{route('anggaranSetuju')}}">Setuju</a>
+                      <form action="{{route('anggaranTidakSetuju')}}" method="post" id="deleteButton{{ $anggaran->id_anggaran }}">
+                        {{ csrf_field() }}
+                        <input type="hidden" name="id_anggaran" value="{{$anggaran->id_anggaran}}">
+                        <button type="submit" class="btn btn-danger btn-xs"></i>Tidak Setuju</button>
+                        <!-- <script>
+                          document.getElementById('deleteButton{{ $anggaran->id_anggaran }}').onclick = function(event){
+                            event.preventDefault();
+                            swal({
+                              title: "Apakah anda yakin tidak setuju?",
+                              text: "Anda tidak dapat mengembalikan kembali.",
+                              type: "warning",
+                              showCancelButton: true,
+                              confirmButtonColor: '#DD6B55',
+                              confirmButtonText: 'Ya',
+                              closeOnConfirm: false,
+                              //closeOnCancel: false
+                            },
+                            function(){
+                              // swal("Terhapus", "Akun telah terhapus!", "Sukses");
+                              document.getElementById("deleteButton{{ $anggaran->id_anggaran }}").submit();
+                            });
+                          };
+                        </script> -->
                       </form>
                     </td>
                   </tr>
