@@ -20,6 +20,7 @@ Route::group(['prefix'=>'KepalaSekolah'], function(){
   Route::post('/EditStaff', 'KepalaSekolahController@editStaff1')->name('editStaff1');
   Route::get('/DaftarSarana', 'KepalaSekolahController@lihatSarana')->name('lihatAnggaran');
   Route::get('/SaranaSetuju', 'KepalaSekolahController@anggaranSetuju')->name('anggaranSetuju');
+  Route::post('/SaranaTidakSetuju', 'KepalaSekolahController@anggaranTidakSetuju')->name('anggaranTidakSetuju');
   Route::get('/Laporan', 'KepalaSekolahController@pdf')->name('lihatLaporan');
   // Route::post('/TambahSiswa', 'StaffAdministrasiController@tambahSiswa')->name('tambahSiswa');
   // Route::get('/BayarSPP', 'StaffAdministrasiController@formBayarSPP')->name('formBayarSPP');

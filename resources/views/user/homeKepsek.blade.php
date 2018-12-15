@@ -46,12 +46,11 @@
                         session()->put('id_anggaran', $anggaran->id_anggaran);
                        ?>
                        <a class="btn btn-danger btn-xs" href="{{route('anggaranSetuju')}}">Setuju</a>
-                      <form action="" method="post" id="deleteButton{{ $anggaran->id_anggaran }}">
+                      <form action="{{route('anggaranTidakSetuju')}}" method="post" id="deleteButton{{ $anggaran->id_anggaran }}">
                         {{ csrf_field() }}
-                        {{ method_field('DELETE') }}
-
+                        <input type="hidden" name="id_anggaran" value="{{$anggaran->id_anggaran}}">
                         <button type="submit" class="btn btn-danger btn-xs"></i>Tidak Setuju</button>
-                        <script>
+                        <!-- <script>
                           document.getElementById('deleteButton{{ $anggaran->id_anggaran }}').onclick = function(event){
                             event.preventDefault();
                             swal({
@@ -69,7 +68,7 @@
                               document.getElementById("deleteButton{{ $anggaran->id_anggaran }}").submit();
                             });
                           };
-                        </script>
+                        </script> -->
                       </form>
                     </td>
                   </tr>

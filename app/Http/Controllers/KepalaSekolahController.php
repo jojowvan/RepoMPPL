@@ -96,6 +96,13 @@ class KepalaSekolahController extends Controller
     return redirect()->route('home');
   }
 
+  public function anggaranTidakSetuju(Request $request)
+  {
+    $anggaran = Anggaran::where('id_anggaran', $request->id_anggaran)->update(['setuju' => 2]);
+
+    return redirect()->route('home');
+  }
+
   public function pdf()
   {
     $pdf = PDF::loadView('laporan');
