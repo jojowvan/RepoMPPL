@@ -16,12 +16,13 @@ Route::group(['prefix'=>'KepalaSekolah'], function(){
   Route::get('/DaftarStaff', 'KepalaSekolahController@daftarStaff')->name('daftarStaff');
   Route::get('/TambahStaff', 'KepalaSekolahController@formTambahStaff')->name('formTambahStaff');
   Route::post('/TambahStaff', 'KepalaSekolahController@tambahStaff')->name('tambahStaff');
-  Route::get('/EditStaff', 'KepalaSekolahController@editStaff')->name('editStaff');
+  Route::get('/EditStaff/{id}', 'KepalaSekolahController@editStaff')->name('editStaff');
   Route::post('/EditStaff', 'KepalaSekolahController@editStaff1')->name('editStaff1');
   Route::get('/DaftarSarana', 'KepalaSekolahController@lihatSarana')->name('lihatAnggaran');
   Route::get('/SaranaSetuju', 'KepalaSekolahController@anggaranSetuju')->name('anggaranSetuju');
   Route::get('/Laporan', 'KepalaSekolahController@pdf')->name('lihatLaporan');
-  // Route::post('/TambahSiswa', 'StaffAdministrasiController@tambahSiswa')->name('tambahSiswa');
+  Route::post('/EditStaff', 'KepalaSekolahController@editStaff1')->name('editStaff1');
+  Route::get('/Pengaturan', 'KepalaSekolahController@gantiPassword')->name('password.kepsek');
   // Route::get('/BayarSPP', 'StaffAdministrasiController@formBayarSPP')->name('formBayarSPP');
   // Route::post('/BayarSPP', 'StaffAdministrasiController@bayarSPP')->name('bayarSPP');
 });
@@ -32,6 +33,7 @@ Route::group(['prefix'=>'Administrasi'], function(){
   Route::post('/TambahSiswa', 'StaffAdministrasiController@tambahSiswa')->name('tambahSiswa');
   Route::get('/BayarSPP', 'StaffAdministrasiController@formBayarSPP')->name('formBayarSPP');
   Route::post('/BayarSPP', 'StaffAdministrasiController@bayarSPP')->name('bayarSPP');
+  Route::get('/Pengaturan', 'StaffAdministrasiController@gantiPassword')->name('password.keuangan');
 });
 
 Route::group(['prefix'=>'SaranaPrasarana'], function(){
@@ -44,7 +46,7 @@ Route::group(['prefix'=>'SaranaPrasarana'], function(){
   Route::post('/RencanaAnggaran', 'StaffSaranaController@rencanaAnggaran1')->name('rencana.anggaran1');
   Route::post('/tambahSaranaOtomatis', 'StaffSaranaController@tambahSaranaOtomatis')->name('tambahSaranaOtomatis');
   Route::get('/BatalkanAnggaran', 'StaffSaranaController@batalAnggaran')->name('batalAnggaran');
-
+  Route::get('/Pengaturan', 'StaffSaranaController@gantiPassword')->name('password.sarana');
 });
 //
 // Route::get('/loginDua', function () {

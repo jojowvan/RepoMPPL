@@ -1,3 +1,4 @@
+<?php session()->put('flag', 1); ?>
 @extends('user.userPartial.master')
 
 @section('content')
@@ -66,34 +67,33 @@
                       <td>{{ $staff->email }}</td>
                       <td>{{ $jabatan }}</td>
                       <td style="text-align:center;">{{ $staff->nip }}</td>
-                      <td style="text-align:center;">
-                        <?php
-                          session()->put('id_staff', $staff->id);
-                         ?>
-                         <a href="{{route('editStaff')}}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
-                        <form action="" method="post" id="deleteButton{{ $staff->id }}">
-                          {{ csrf_field() }}
-                          {{ method_field('DELETE') }}
-                          <button type="submit" class="btn btn-danger btn-xs"></i>Delete</button>
-                          <script>
-                            document.getElementById('deleteButton{{ $staff->id }}').onclick = function(event){
-                              event.preventDefault();
-                            	swal({
-                            		title: "Apakah anda yakin ingin menghapus?",
-                            		text: "Anda tidak dapat mengembalikan kembali.",
-                            		type: "warning",
-                            		showCancelButton: true,
-                            		confirmButtonColor: '#DD6B55',
-                            		confirmButtonText: 'Ya',
-                            		closeOnConfirm: false,
-                            		//closeOnCancel: false
-                            	},
-                            	function(){
-                                // swal("Terhapus", "Akun telah terhapus!", "Sukses");
-                                document.getElementById("deleteButton{{ $staff->id }}").submit();
-                            	});
-                            };
-                          </script>
+                      <td style="text-align:center; width:18%;">
+                        <form>
+                          <a href="/KepalaSekolah/EditStaff/{{ $staff->id }}" class="btn btn-info btn-sm"><i class="fa fa-pencil"></i> Edit </a>
+                          <form action="" method="post" id="deleteButton{{ $staff->id }}">
+                            {{ csrf_field() }}
+                            {{ method_field('DELETE') }}
+                            <button type="submit" class="btn btn-danger btn-sm"></i>Delete</button>
+                            <script>
+                              document.getElementById('deleteButton{{ $staff->id }}').onclick = function(event){
+                                event.preventDefault();
+                              	swal({
+                              		title: "Apakah anda yakin ingin menghapus?",
+                              		text: "Anda tidak dapat mengembalikan kembali.",
+                              		type: "warning",
+                              		showCancelButton: true,
+                              		confirmButtonColor: '#DD6B55',
+                              		confirmButtonText: 'Ya',
+                              		closeOnConfirm: false,
+                              		//closeOnCancel: false
+                              	},
+                              	function(){
+                                  // swal("Terhapus", "Akun telah terhapus!", "Sukses");
+                                  document.getElementById("deleteButton{{ $staff->id }}").submit();
+                              	});
+                              };
+                            </script>
+                          </form>
                         </form>
                       </td>
                     </tr>

@@ -25,6 +25,11 @@ class KepalaSekolahController extends Controller
       return view('user/tambahStaff');
   }
 
+  public function gantiPassword()
+  {
+      return view('user/passwordKepsek');
+  }
+
   public function tambahStaff(Request $request)
   {
     $password = str_random(10);
@@ -55,13 +60,14 @@ class KepalaSekolahController extends Controller
     return redirect()->back();
   }
 
-  public function editStaff()
+  public function editStaff($id)
   {
-    $id_staff = Session::get('id_staff');
-    $staff = User::where('id', $id_staff)->first();
+    // $id_staff = Session::get('id_staff');
+    // $staff = User::where('id', $id_staff)->first();
     $jabatane = User::orderBy('jabatan')->get()->pluck('jabatan')->toArray();
     $jabatane = array_unique($jabatane);
     $jabatane = collect($jabatane);
+    $staff = User::find($id);
     // dd($jabatane);
     return view('user/editStaff', compact('staff', 'jabatane'));
   }

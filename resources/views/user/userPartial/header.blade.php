@@ -11,7 +11,29 @@
           <img class="user-avatar rounded-circle" src="{{ asset('images/admin.jpg') }}" alt="User Avatar">
         </a>
         <div class="user-menu dropdown-menu">
-          <a class="nav-link" href="#"><i class="fa fa -cog"></i>Pengaturan</a>
+          <?php
+            if(auth()->user()->jabatan==3) {
+          ?>
+
+          <a class="nav-link" href="{{ route('password.kepsek') }}"><i class="fa fa -cog"></i>Pengaturan</a>
+
+          <?php
+            }
+            else if(auth()->user()->jabatan==1) {
+          ?>
+
+          <a class="nav-link" href="{{ route('password.keuangan') }}"><i class="fa fa -cog"></i>Pengaturan</a>
+
+          <?php
+            }
+            else if(auth()->user()->jabatan==2) {
+          ?>
+
+          <a class="nav-link" href="{{ route('password.sarana') }}"><i class="fa fa -cog"></i>Pengaturan</a>
+
+          <?php
+            }
+          ?>
           <a class="nav-link" href="{{ route('logout') }}"><i class="fa fa-power -off"></i>Keluar</a>
         </div>
       </div>

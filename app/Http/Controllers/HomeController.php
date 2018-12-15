@@ -27,10 +27,10 @@ class HomeController extends Controller
     public function index()
     {
         if(auth()->user()->jabatan==1) {
-          return view('user/home');
+          return view('user/daftarSiswa');
         }
         else if(auth()->user()->jabatan==2) {
-          return view('user/home');
+          return view('user/daftarSarana');
         }
         else if(auth()->user()->jabatan==3) {
           $anggarans = Anggaran::orderBy('nama_sarana')->get();

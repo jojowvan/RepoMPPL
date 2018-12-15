@@ -32,6 +32,11 @@ class StaffSaranaController extends Controller
       return view('user/tambahSarana');
   }
 
+  public function gantiPassword()
+  {
+      return view('user/passwordSarana');
+  }
+
   public function tambahSarana1(Request $request)
   {
     $sarana   = Sarana::create([

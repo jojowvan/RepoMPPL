@@ -1,3 +1,4 @@
+<?php session()->put('flag', 0); ?>
 @extends('user.userPartial.master')
 
 @section('content')
@@ -29,7 +30,7 @@
                     <th style="text-align:center;">Nama Barang</th>
                     <th style="text-align:center;">Jumlah Barang</th>
                     <th style="text-align:center;">Total Barang</th>
-                    <th style="text-align:center;">Keterangan</th>
+                    <th style="text-align:center;">Aksi</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -41,35 +42,37 @@
                     <td>{{ $anggaran->nama_sarana }}</td>
                     <td style="text-align:center;">{{ $anggaran->jumlah }} Buah</td>
                     <td style="text-align:center;">Rp {{ number_format($anggaran->harga, 0, ',', '.') }}</td>
-                    <td style="text-align:center;">
+                    <td style="text-align:center; width:30%;">
                       <?php
                         session()->put('id_anggaran', $anggaran->id_anggaran);
                        ?>
-                       <a class="btn btn-danger btn-xs" href="{{route('anggaranSetuju')}}">Setuju</a>
-                      <form action="" method="post" id="deleteButton{{ $anggaran->id_anggaran }}">
-                        {{ csrf_field() }}
-                        {{ method_field('DELETE') }}
+                      <form>
+                        <a class="btn btn-success btn-sm" href="{{route('anggaranSetuju')}}">Setuju</a>
+                        <form action="" method="post" id="deleteButton{{ $anggaran->id_anggaran }}">
+                          {{ csrf_field() }}
+                          {{ method_field('DELETE') }}
 
-                        <button type="submit" class="btn btn-danger btn-xs"></i>Tidak Setuju</button>
-                        <script>
-                          document.getElementById('deleteButton{{ $anggaran->id_anggaran }}').onclick = function(event){
-                            event.preventDefault();
-                            swal({
-                              title: "Apakah anda yakin tidak setuju?",
-                              text: "Anda tidak dapat mengembalikan kembali.",
-                              type: "warning",
-                              showCancelButton: true,
-                              confirmButtonColor: '#DD6B55',
-                              confirmButtonText: 'Ya',
-                              closeOnConfirm: false,
-                              //closeOnCancel: false
-                            },
-                            function(){
-                              // swal("Terhapus", "Akun telah terhapus!", "Sukses");
-                              document.getElementById("deleteButton{{ $anggaran->id_anggaran }}").submit();
-                            });
-                          };
-                        </script>
+                          <button type="submit" class="btn btn-danger btn-sm"></i>Tidak Setuju</button>
+                          <script>
+                            document.getElementById('deleteButton{{ $anggaran->id_anggaran }}').onclick = function(event){
+                              event.preventDefault();
+                              swal({
+                                title: "Apakah anda yakin tidak setuju?",
+                                text: "Anda tidak dapat mengembalikan kembali.",
+                                type: "warning",
+                                showCancelButton: true,
+                                confirmButtonColor: '#DD6B55',
+                                confirmButtonText: 'Ya',
+                                closeOnConfirm: false,
+                                //closeOnCancel: false
+                              },
+                              function(){
+                                // swal("Terhapus", "Akun telah terhapus!", "Sukses");
+                                document.getElementById("deleteButton{{ $anggaran->id_anggaran }}").submit();
+                              });
+                            };
+                          </script>
+                        </form>
                       </form>
                     </td>
                   </tr>

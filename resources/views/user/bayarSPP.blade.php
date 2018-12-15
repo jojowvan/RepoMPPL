@@ -1,3 +1,4 @@
+<?php session()->put('flag', 7); ?>
 @extends('user.userPartial.master')
 
 @section('content')

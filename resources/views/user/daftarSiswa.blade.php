@@ -1,3 +1,4 @@
+<?php session()->put('flag', 5); ?>
 @extends('user.userPartial.master')
 
 @section('content')
@@ -28,9 +29,9 @@
           <!-- Content -->
           <div class="col-md-12">
             <div class="card">
-              <div class="card-header">
+              <!-- <div class="card-header">
                 <strong class="card-title">Data Table</strong>
-              </div>
+              </div> -->
               <div class="card-body">
                 <table id="bootstrap-data-table" class="table table-striped table-bordered">
                   <thead>

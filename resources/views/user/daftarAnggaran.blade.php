@@ -1,3 +1,4 @@
+<?php session()->put('flag', 10); ?>
 @extends('user.userPartial.master')
 
 @section('content')
@@ -28,9 +29,9 @@
           <!-- Content -->
           <div class="col-md-12">
             <div class="card">
-              <div class="card-header">
-                <!-- <strong class="card-title">Data Table</strong> -->
-              </div>
+              <!-- <div class="card-header">
+                <strong class="card-title">Data Table</strong>
+              </div> -->
               <div class="card-body">
                 <table class="table table-striped table-bordered">
                   <thead>
@@ -46,9 +47,8 @@
                   <tbody>
                     <?php
                       use App\Anggaran;
-
                       $i = 1;
-                      foreach(Anggaran::orderBy('id_anggaran')->get() as $anggaran) {
+                      foreach(Anggaran::orderBy('setuju')->get() as $anggaran) {
                     ?>
 
                     <tr>
@@ -73,10 +73,10 @@
                             <input type="hidden" value="{{$anggaran->id_anggaran}}" name="id_anggaran">
                             <input type="hidden" value="{{$anggaran->nama_sarana}}" name="nama_sarana">
                             <input type="hidden" value="{{$anggaran->jumlah}}" name="jumlah">
-                            <button type="submit" class="btn btn-danger btn-xs"></i>Tambah Sarana</button>
+                            <button type="submit" class="btn btn-success btn-xs"></i>Simpan Sarana</button>
                           </form>
                         @elseif($anggaran->setuju == NULL)
-                          <a href="{{route('batalAnggaran')}}"> Batalkan Anggaran </a>
+                          <a href="{{route('batalAnggaran')}}" class="btn btn-danger btn-xs"> Batalkan Anggaran </a>
                         @endif
                       </td>
                       @endif

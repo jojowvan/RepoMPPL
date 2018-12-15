@@ -1,3 +1,4 @@
+<?php session()->put('flag', 3); ?>
 @extends('user.userPartial.master')
 
 @section('content')
@@ -29,7 +30,6 @@
                     <th style="text-align:center;">Nama Barang</th>
                     <th style="text-align:center;">Jumlah Barang</th>
                     <th style="text-align:center;">Tanggal Pembelian</th>
-                    <th style="text-align:center;">Keterangan</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -79,7 +79,6 @@
                     <td>{{ $sarana->nama_sarana }}</td>
                     <td style="text-align:center;">{{ $sarana->jumlah }} Buah</td>
                     <td style="text-align:center;">{{ $tanggal[2] }} {{$tanggal[1]}} {{$tanggal[0]}}</td>
-                    <td style="text-align:center;">{{ $sarana->keterangan }}</td>
                   </tr>
                   <?php $i++; ?>
                   @endforeach

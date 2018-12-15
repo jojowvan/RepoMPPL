@@ -21,6 +21,11 @@ class StaffAdministrasiController extends Controller
       return view('user/tambahSiswa');
   }
 
+  public function gantiPassword()
+  {
+      return view('user/passwordKeuangan');
+  }
+
   public function tambahSiswa(Request $request)
 {
 
