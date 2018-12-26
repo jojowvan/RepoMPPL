@@ -46,7 +46,8 @@
                       <?php
                         session()->put('id_anggaran', $anggaran->id_anggaran);
                        ?>
-                       <a class="btn btn-danger btn-xs" href="{{route('anggaranSetuju')}}">Setuju</a>
+                       <form>
+                      <a class="btn btn-success btn-xs" href="{{route('anggaranSetuju')}}">Setuju</a>
                       <form action="{{route('anggaranTidakSetuju')}}" method="post" id="deleteButton{{ $anggaran->id_anggaran }}">
                         {{ csrf_field() }}
                         <input type="hidden" name="id_anggaran" value="{{$anggaran->id_anggaran}}">
@@ -71,6 +72,7 @@
                           };
                         </script> -->
                       </form>
+                    </form>
                     </td>
                   </tr>
                   <?php $i++; ?>
