@@ -30,7 +30,7 @@
           <a href="{{ route('lihatAnggaran') }}"> <i class="menu-icon fa fa-users"></i>Daftar Sarana</a>
         </li>
         <li>
-          <a href="{{ route('lihatLaporan') }}"> <i class="menu-icon fa fa-file"></i>Laporan</a>
+          <a href="{{ route('list.laporan') }}"> <i class="menu-icon fa fa-file"></i>Laporan</a>
         </li>
         <!-- <li>
           <a href=""> <i class="menu-icon ti-email"></i>Pembayaran SPP</a>

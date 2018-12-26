@@ -31,18 +31,18 @@
             <div class="card">
               <!-- <div class="card-header">Example Form</div> -->
               <div class="card-body card-block">
-                <form action="" method="post" class="">
+                <form action="{{route('password.sarana1')}}" method="post" class="">
                   <input type="hidden" name="_token" value="{{ csrf_token() }}">
                   <div class="form-group">
                     <div class="input-group">
                       <div class="input-group-addon"><i class="fa fa-lock"></i></div>
-                      <input type="text" id="username" name="nama_sarana" placeholder="Kata Sandi Lama" class="form-control">
+                      <input type="password" id="username" name="password" placeholder="Kata Sandi Lama" class="form-control">
                     </div>
                   </div>
                   <div class="form-group">
                     <div class="input-group">
                       <div class="input-group-addon"><i class="fa fa-lock"></i></div>
-                      <input type="text" id="email" name="jumlah" placeholder="Kata Sandi Baru" class="form-control">
+                      <input type="password" id="email" name="password_baru" placeholder="Kata Sandi Baru" class="form-control">
                     </div>
                   </div>
                   <div class="form-actions form-group"><button type="submit" class="btn btn-success btn-sm">Tambah</button></div>

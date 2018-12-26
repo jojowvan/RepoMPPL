@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Sarana;
 use App\Anggaran;
+use App\Siswa;
+use App\SPP;
 use Mail;
 use PDF;
 use Session;
@@ -113,5 +115,16 @@ class KepalaSekolahController extends Controller
   {
     $pdf = PDF::loadView('laporan');
     return $pdf->stream('Laporan.pdf');
+  }
+
+  public function ListLaporan()
+  {
+    $sarana = Sarana::orderBy('nama_sarana')->get();
+    $siswa = Siswa::orderBy('nama_siswa')->get();
+    $spp = SPP::orderBy('id')->get();
+
+    $pdf = PDF::loadView('user/listLaporan');
+    return $pdf->stream('Laporan.pdf');
+    // return view('user/listLaporan', compact('sarana', 'siswa', 'spp'));
   }
 }

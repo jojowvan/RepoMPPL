@@ -69,7 +69,7 @@
                       <td style="text-align:center;">{{ $staff->nip }}</td>
                       <td style="text-align:center; width:18%;">
                         <form>
-                          <a href="/KepalaSekolah/EditStaff/{{ $staff->id }}" class="btn btn-info btn-sm"><i class="fa fa-pencil"></i> Edit </a>
+                          <a href="{{route('editStaff', $staff->id)}}" class="btn btn-info btn-sm"><i class="fa fa-pencil"></i> Edit </a>
                           <form action="" method="post" id="deleteButton{{ $staff->id }}">
                             {{ csrf_field() }}
                             {{ method_field('DELETE') }}

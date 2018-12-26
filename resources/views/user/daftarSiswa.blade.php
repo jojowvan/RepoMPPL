@@ -56,11 +56,47 @@
                         if($tahun_masuk <= 12) {
                           $spp = SPP::where('id_siswa', $siswa->id_siswa)->value('bulan_terakhir');
                           $spp = $spp % 12;
-                          if($spp == 0) {
-                            $spp = 'Desember';
-                          }
-                          else if($spp == 1) {
+                          if($spp == 1) {
                             $spp = 'Januari';
+                          }
+                          else if($spp == 2) {
+                            $spp = 'Februari';
+                          }
+                          else if($spp == 3) {
+                            $spp = 'Maret';
+                          }
+                          else if($spp == 4) {
+                            $spp = 'April';
+                          }
+                          else if($spp == 5) {
+                            $spp = 'Mei';
+                          }
+                          else if($spp == 6) {
+                            $spp = 'Juni';
+                          }
+                          else if($spp == 7) {
+                            $spp = 'Juli';
+                          }
+                          else if($spp == 8) {
+                            $spp = 'Agustus';
+                          }
+                          else if($spp == 9) {
+                            $spp = 'September';
+                          }
+                          else if($spp == 10) {
+                            $spp = 'Oktober';
+                          }
+                          else if($spp == 11) {
+                            $spp = 'November';
+                          }
+                          else if($spp == 0) {
+                            if($tahun_masuk==10) {
+                              $spp = 'Belum ada pembayaran';
+                            }
+
+                            else {
+                              $spp = 'Desember';
+                            }
                           }
                     ?>
                     <tr>

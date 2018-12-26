@@ -24,6 +24,7 @@ Route::group(['prefix'=>'KepalaSekolah'], function(){
   Route::get('/Laporan', 'KepalaSekolahController@pdf')->name('lihatLaporan');
   Route::post('/EditStaff', 'KepalaSekolahController@editStaff1')->name('editStaff1');
   Route::get('/Pengaturan', 'KepalaSekolahController@gantiPassword')->name('password.kepsek');
+  Route::get('/ListLaporan', 'KepalaSekolahController@ListLaporan')->name('list.laporan');
   // Route::get('/BayarSPP', 'StaffAdministrasiController@formBayarSPP')->name('formBayarSPP');
   // Route::post('/BayarSPP', 'StaffAdministrasiController@bayarSPP')->name('bayarSPP');
 });
@@ -35,6 +36,7 @@ Route::group(['prefix'=>'Administrasi'], function(){
   Route::get('/BayarSPP', 'StaffAdministrasiController@formBayarSPP')->name('formBayarSPP');
   Route::post('/BayarSPP', 'StaffAdministrasiController@bayarSPP')->name('bayarSPP');
   Route::get('/Pengaturan', 'StaffAdministrasiController@gantiPassword')->name('password.keuangan');
+  Route::post('/Pengaturan1', 'StaffAdministrasiController@gantiPassword1')->name('password.keuangan1');
 });
 
 Route::group(['prefix'=>'SaranaPrasarana'], function(){
@@ -46,8 +48,11 @@ Route::group(['prefix'=>'SaranaPrasarana'], function(){
   Route::get('/RencanaAnggaran', 'StaffSaranaController@rencanaAnggaran')->name('rencana.anggaran');
   Route::post('/RencanaAnggaran', 'StaffSaranaController@rencanaAnggaran1')->name('rencana.anggaran1');
   Route::post('/tambahSaranaOtomatis', 'StaffSaranaController@tambahSaranaOtomatis')->name('tambahSaranaOtomatis');
-  Route::get('/BatalkanAnggaran', 'StaffSaranaController@batalAnggaran')->name('batalAnggaran');
+  Route::get('/BatalkanAnggaran/{id_anggaran}', 'StaffSaranaController@batalAnggaran')->name('batalAnggaran');
   Route::get('/Pengaturan', 'StaffSaranaController@gantiPassword')->name('password.sarana');
+  Route::post('/Pengaturan1', 'StaffSaranaController@gantiPassword1')->name('password.sarana1');
+  Route::post('/EditSarana', 'StaffSaranaController@editSarana')->name('editSarana');
+  Route::post('/EditSarana1', 'StaffSaranaController@editSarana1')->name('editSarana1');
 });
 //
 // Route::get('/loginDua', function () {

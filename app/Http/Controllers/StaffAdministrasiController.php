@@ -6,8 +6,11 @@ use Illuminate\Http\Request;
 
 use App\Siswa;
 use App\SPP;
+use App\User;
 use Carbon\Carbon;
 use DB;
+use Auth;
+use Illuminate\Support\Facades\Hash;
 
 class StaffAdministrasiController extends Controller
 {
@@ -24,6 +27,23 @@ class StaffAdministrasiController extends Controller
   public function gantiPassword()
   {
       return view('user/passwordKeuangan');
+  }
+
+  public function gantiPassword1(Request $request)
+  {
+      if(Hash::check($request->get('password'), Auth::user()->password)) {
+        $user = User::find(Auth::user()->id)->update([
+          'password'  => Hash::make($request->password_baru)
+        ]);
+        session()->flash('passwordChanged', 'Your Password Has Been Changed.');
+        return view('user/daftarSiswa');
+      }
+
+      else {
+        session()->flash('invalidPassword', 'New Password cannot be same as your current password. Please choose a different password.');
+        return redirect()->back();
+      }
+
   }
 
   public function tambahSiswa(Request $request)

@@ -48,11 +48,10 @@
                     <?php
                       use App\Anggaran;
                       $i = 1;
-                      foreach(Anggaran::orderBy('setuju')->get() as $anggaran) {
+                      foreach(Anggaran::orderBy('updated_at')->get() as $anggaran) {
                     ?>
 
                     <tr>
-                      @if($anggaran->setuju != 3)
                       <td style="text-align:center;">{{ $i }}.</td>
                       <td>{{ $anggaran->nama_sarana }}</td>
                       <td style="text-align:center;">{{ $anggaran->jumlah }} Buah</td>
@@ -63,6 +62,8 @@
                       <td style="text-align:center;">Sudah Disetujui</td>
                       @elseif($anggaran->setuju == 2)
                       <td style="text-align:center;">Tidak Disetujui</td>
+                      @elseif($anggaran->setuju == 3)
+                      <td style="text-align:center;">Disetujui & Telah Ditambahkan</td>
                       @else
                       <td style="text-align:center;"></td>
                       @endif
@@ -76,10 +77,9 @@
                             <button type="submit" class="btn btn-success btn-xs"></i>Simpan Sarana</button>
                           </form>
                         @elseif($anggaran->setuju == NULL)
-                          <a href="{{route('batalAnggaran')}}" class="btn btn-danger btn-xs"> Batalkan Anggaran </a>
+                          <a href="{{route('batalAnggaran', $anggaran->id_anggaran)}}" class="btn btn-danger btn-xs"> Batalkan Anggaran </a>
                         @endif
                       </td>
-                      @endif
                     </tr>
 
                     <?php

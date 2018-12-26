@@ -40,6 +40,8 @@
                       <th style="text-align:center;">Nama Barang</th>
                       <th style="text-align:center;">Jumlah Barang</th>
                       <th style="text-align:center;">Tanggal Pembelian</th>
+                      <th style="text-align:center;">Keterangan</th>
+                      <th style="text-align:center;">Edit</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -47,14 +49,59 @@
                       use App\Sarana;
 
                       $i = 1;
-                      foreach(Sarana::orderBy('id_sarana')->get() as $sarana) {
+                      foreach(Sarana::orderBy('nama_sarana')->get() as $sarana) {
+                        $tanggal = explode('-', $sarana->tanggal_pembelian);
+                        if($tanggal[1] == 1) {
+                          $bulan = 'Januari';
+                        }
+                        else if($tanggal[1] == 2) {
+                          $bulan = 'Februari';
+                        }
+                        else if($tanggal[1] == 3) {
+                          $bulan = 'Maret';
+                        }
+                        else if($tanggal[1] == 4) {
+                          $bulan = 'April';
+                        }
+                        else if($tanggal[1] == 5) {
+                          $bulan = 'Mei';
+                        }
+                        else if($tanggal[1] == 6) {
+                          $bulan = 'Juni';
+                        }
+                        else if($tanggal[1] == 7) {
+                          $bulan = 'Juli';
+                        }
+                        else if($tanggal[1] == 8) {
+                          $bulan = 'Agustus';
+                        }
+                        else if($tanggal[1] == 9) {
+                          $bulan = 'September';
+                        }
+                        else if($tanggal[1] == 10) {
+                          $bulan = 'Oktober';
+                        }
+                        else if($tanggal[1] == 11) {
+                          $bulan = 'November';
+                        }
+                        else if($tanggal[1] == 12) {
+                          $bulan = 'Desember';
+                        }
                     ?>
 
                     <tr>
                       <td style="text-align:center;">{{ $i }}.</td>
                       <td>{{ $sarana->nama_sarana }}</td>
                       <td style="text-align:center;">{{ $sarana->jumlah }} buah</td>
-                      <td style="text-align:center;">{{ $sarana->tanggal_pembelian }}</td>
+                      <td style="text-align:center;">{{$tanggal[2]}} {{$bulan}} {{$tanggal[0]}}</td>
+                      <td style="text-align:center;">{{ $sarana->keterangan }}</td>
+                      <td style="text-align:center;">
+                        <form action="{{route('editSarana')}}" method="post">
+                          {{ csrf_field() }}
+                          <input type="hidden" value="{{$sarana->id_sarana}}" name="id_sarana">
+                          <button type="submit" class="btn btn-success btn-xs"></i>Edit Sarana</button>
+                        </form>
+                      </td>
                     </tr>
 
                     <?php

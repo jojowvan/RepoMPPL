@@ -9,6 +9,7 @@ use App\User;
 use Auth;
 use Session;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Hash;
 
 class StaffSaranaController extends Controller
 {
@@ -35,6 +36,23 @@ class StaffSaranaController extends Controller
   public function gantiPassword()
   {
       return view('user/passwordSarana');
+  }
+
+  public function gantiPassword1(Request $request)
+  {
+      if(Hash::check($request->get('password'), Auth::user()->password)) {
+        $user = User::find(Auth::user()->id)->update([
+          'password'  => Hash::make($request->password_baru)
+        ]);
+        session()->flash('passwordChanged', 'Your Password Has Been Changed.');
+        return view('user/daftarSarana');
+      }
+
+      else {
+        session()->flash('invalidPassword', 'New Password cannot be same as your current password. Please choose a different password.');
+        return redirect()->back();
+      }
+
   }
 
   public function tambahSarana1(Request $request)
@@ -87,8 +105,30 @@ class StaffSaranaController extends Controller
     return redirect()->route('daftar.anggaran');
   }
 
-  public function batalAnggaran()
+  public function batalAnggaran($id_anggaran)
   {
-    dd(2);
+    $anggaran = Anggaran::where('id_anggaran', $id_anggaran)->delete();
+
+    session()->flash('success', 'Anggaran Berhasil Dibatalkan');
+
+    return redirect()->back();
+  }
+
+  public function EditSarana(Request $request)
+  {
+    $sarana = Sarana::where('id_sarana', $request->id_sarana)->first();
+
+    return view('user/editSarana', compact('sarana'));
+  }
+
+  public function EditSarana1(Request $request)
+  {
+    $sarana = Sarana::where('id_sarana', $request->id_sarana)->update([
+      'nama_sarana'       => $request->nama_sarana,
+      'jumlah'            => $request->jumlah,
+      'tanggal_pembelian' => $request->tanggal
+    ]);
+
+    return redirect()->route('daftar.sarana');
   }
 }
