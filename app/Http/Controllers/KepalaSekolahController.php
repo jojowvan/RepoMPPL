@@ -119,11 +119,11 @@ class KepalaSekolahController extends Controller
 
   public function ListLaporan()
   {
-    $sarana = Sarana::orderBy('nama_sarana')->get();
-    $siswa = Siswa::orderBy('nama_siswa')->get();
-    $spp = SPP::orderBy('id')->get();
+    // $sarana = Sarana::orderBy('nama_sarana')->get();
+    // $siswa = Siswa::orderBy('nama_siswa')->get();
+    // $spp = SPP::orderBy('id')->get();
 
-    $pdf = PDF::loadView('user/listLaporan');
+    $pdf = PDF::loadView('z');
     return $pdf->stream('Laporan.pdf');
     // return view('user/listLaporan', compact('sarana', 'siswa', 'spp'));
   }

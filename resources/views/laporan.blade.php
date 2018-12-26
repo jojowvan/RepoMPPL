@@ -4,11 +4,6 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <title>
-        <?php
-        $tahun = Session::get('tahun');
-        $bulan = Session::get('bulan');
-        echo 'Laporan Monitoring Data Bulan '. $bulan . ' ' . $tahun .'.pdf';
-        ?>
         </title>
 		<style type="text/css">
 
